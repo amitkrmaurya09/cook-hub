@@ -177,15 +177,3 @@ Instead of multiple pages for auth, this project uses:
 > 🧩 **Single Modal + Dynamic Views = Clean UX + Scalable Code**
 
 ---
-
-## 🧑‍🍳 Author
-
-Built with caffeine ☕ and curiosity by **Amit**
-
----
-
-If you want, I can also:
-
-* Add **GitHub badges + screenshots**
-* Create **API documentation**
-* Or convert this into a **professional portfolio project README (🔥 level)**
