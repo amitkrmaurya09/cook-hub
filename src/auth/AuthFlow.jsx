@@ -25,9 +25,9 @@ export async function handleAuthFlow({
         } else if (res?.error === "INVALID_PASSWORD") {
           return { error: "Wrong password" };
         } else {
-              // ✅ STORE TOKEN HERE
-            localStorage.setItem("token", res.token);
-            return { success: true, user: res.user };
+          // ✅ STORE TOKEN HERE
+          localStorage.setItem("token", res.token);
+          return { success: true, user: res.user };
         }
         break;
       }
@@ -35,7 +35,11 @@ export async function handleAuthFlow({
       // 📝 REGISTER
       case "register": {
         const res = await registerUser(data);
-
+        if (res?.status == 409) {
+          console.log(res.status);
+          setError("⚠️ Account already exists. Try logging in instead.");
+          return; // ⛔ stop here, don't go to OTP
+        }
         setEmail(data.email);
         setView("otp"); // 👈 move to OTP
 
@@ -47,6 +51,7 @@ export async function handleAuthFlow({
         const res = await verifyOtp(data);
 
         if (res?.success) {
+          setView("login"); // ✅ move to login
           return { success: true };
         }
         return { error: "Invalid OTP" };

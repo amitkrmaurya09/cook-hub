@@ -13,17 +13,17 @@ import Create from "../pages/Create";
 
 const AuthContainer = forwardRef((props, ref) => {
     const modalRef = useRef();
-    
+
     const [view, setView] = useState("login");
     const [email, setEmail] = useState("");
-    
+
     const handleFlow = (type, data) =>
-      handleAuthFlow({
-        type,
-        data,
-        setView,
-        setEmail,
-      });
+        handleAuthFlow({
+            type,
+            data,
+            setView,
+            setEmail,
+        });
 
     // expose open() to navbar
     useImperativeHandle(ref, () => ({
@@ -31,11 +31,14 @@ const AuthContainer = forwardRef((props, ref) => {
             setView("login");
             modalRef.current.open();
         },
+        close: () => {
+            modalRef.current.close(); // 👈 add this
+        },
         openProfile: () => {
             setView("profile");
             modalRef.current.open();
         },
-        openCreate: ()=>{
+        openCreate: () => {
             setView("create");
             modalRef.current.open();
         }
@@ -46,11 +49,12 @@ const AuthContainer = forwardRef((props, ref) => {
             case "register":
                 return (
                     <Register
+                        handleFlow={handleFlow} // Added this
                         switchToOtp={(e) => {
                             setEmail(e);
                             setView("otp");
                         }}
-                        switchToLogin={() => setView("login")} // ✅ ADD THIS
+                        switchToLogin={() => setView("login")}
                     />
                 );
 
@@ -69,7 +73,7 @@ const AuthContainer = forwardRef((props, ref) => {
                 );
 
             case "reset":
-                return <ResetPassword email={email} />;
+                return <ResetPassword email={email} handleFlow={handleFlow} />;
             case "profile":
                 return <Profile />;
             case "create":
@@ -80,7 +84,7 @@ const AuthContainer = forwardRef((props, ref) => {
                         switchToForgot={() => setView("forgot")}
                         switchToRegister={() => setView("register")}
                         handleFlow={handleFlow}
-                        
+                        closeModal={() => modalRef.current.close()} 
                     />
                 );
         }

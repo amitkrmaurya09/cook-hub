@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, ArrowRight, User } from "lucide-react";
 import Login from "./Login";
 
-export default function Register({ switchToOtp, switchToLogin }) {
+export default function Register({ switchToOtp, switchToLogin, handleFlow }) {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);

@@ -1,6 +1,6 @@
 // pages/Home.jsx
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../Navbar/Navbar";
 
 // ── Dummy data (replace API.get("/recipes") when backend is ready) ──────────
 const DUMMY_RECIPES = [

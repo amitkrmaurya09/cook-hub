@@ -2,12 +2,15 @@ import { useState } from "react";
 import { loginUser } from "../api/api";
 import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-export default function Login({ switchToForgot, switchToRegister }) {
+export default function Login({ switchToForgot, switchToRegister, handleFlow, closeModal }) {
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +22,11 @@ export default function Login({ switchToForgot, switchToRegister }) {
 
       if (res?.error) {
         setError(res.error);
-      } else {
-        console.log("Login success 🚀", res);
+      } else if (res?.success) {
+        console.log("Login success 🚀");
+
+        closeModal();           // ✅ close modal
+        window.location.reload(); // ✅ refresh dashboard
       }
     } catch (err) {
       setError("Something went wrong 😅");

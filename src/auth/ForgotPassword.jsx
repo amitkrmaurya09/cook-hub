@@ -3,24 +3,18 @@ import { forgotPassword } from "../api/api";
 import { motion } from "framer-motion";
 import { Mail, ArrowRight } from "lucide-react";
 
-export default function ForgotPassword({ switchToReset }) {
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState("");
-
+export default function ForgotPassword({ switchToReset, handleFlow }) { // Added handleFlow
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setMsg("");
 
     try {
-      await handleFlow("forgot", { email });
+      const res = await handleFlow("forgot", { email }); // Capture res
       console.log(res);
       setMsg("Reset link sent successfully 🚀");
-
-      setTimeout(() => {
-        switchToReset(email);
-      }, 1000);
+      // Note: AuthFlow.jsx already calls setView("reset"), 
+      // but keeping your timeout for the success message is fine.
     } catch (err) {
       setMsg("Something went wrong 😅");
     } finally {
