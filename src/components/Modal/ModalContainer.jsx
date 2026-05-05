@@ -1,14 +1,15 @@
 import { useState, forwardRef, useImperativeHandle, useRef } from "react";
 
-import AuthModal from "./AuthModel";
-import Login from "./Login";
-import Register from "./Register";
-import OtpVerify from "./OtpVerify";
-import ForgotPassword from "./ForgotPassword";
-import ResetPassword from "./ResetPassword";
-import { handleAuthFlow } from "./AuthFlow"; // adjust path
-import Profile from "../pages/Profile";
-import Create from "../pages/Create";
+import AuthModal from "./Model";
+import Login from "../../auth/Login";
+import Register from "../../auth/Register";
+import OtpVerify from "../../auth/OtpVerify";
+import ForgotPassword from "../../auth/ForgotPassword";
+import ResetPassword from "../../auth/ResetPassword";
+import { handleFlow } from "./ModalFlow"; // adjust path
+import Profile from "../ProfilePages/Profile";
+import Create from "../../pages/Create";
+import Feed from "../../feed/FeedPage";
 
 
 const AuthContainer = forwardRef((props, ref) => {
@@ -18,7 +19,7 @@ const AuthContainer = forwardRef((props, ref) => {
     const [email, setEmail] = useState("");
 
     const handleFlow = (type, data) =>
-        handleAuthFlow({
+        handleFlow({
             type,
             data,
             setView,
@@ -40,6 +41,10 @@ const AuthContainer = forwardRef((props, ref) => {
         },
         openCreate: () => {
             setView("create");
+            modalRef.current.open();
+        },
+        openFeed: () => {
+            setView("feed");
             modalRef.current.open();
         }
     }));
@@ -78,13 +83,17 @@ const AuthContainer = forwardRef((props, ref) => {
                 return <Profile />;
             case "create":
                 return <Create />
+            case "edit":
+                return <Create />
+            case "feed":
+                return <Feed />
             default:
                 return (
                     <Login
                         switchToForgot={() => setView("forgot")}
                         switchToRegister={() => setView("register")}
                         handleFlow={handleFlow}
-                        closeModal={() => modalRef.current.close()} 
+                        closeModal={() => modalRef.current.close()}
                     />
                 );
         }

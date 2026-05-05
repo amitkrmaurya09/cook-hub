@@ -4,10 +4,10 @@ import {
   verifyOtp,
   forgotPassword,
   resetPassword,
-} from "../api/api";
+} from "../../api/auth-api";
 
 // 🔥 CENTRAL AUTH FLOW CONTROLLER
-export async function handleAuthFlow({
+export async function handleFlow({
   type,
   data,
   setView,
@@ -27,6 +27,8 @@ export async function handleAuthFlow({
         } else {
           // ✅ STORE TOKEN HERE
           localStorage.setItem("token", res.token);
+          localStorage.setItem("user-info", JSON.stringify(res.user));
+
           return { success: true, user: res.user };
         }
         break;
@@ -74,6 +76,11 @@ export async function handleAuthFlow({
         setView("login"); // 👈 back to login
 
         return res;
+      }
+
+      case "edit": {
+        setView("edit")
+        return;
       }
 
       default:

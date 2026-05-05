@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import AuthContainer from "../auth/AuthContainer";
+import AuthContainer from "../components/Modal/ModalContainer";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import AuthButtons from "./AuthButtons";

@@ -45,3 +45,7 @@ dialog {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
 }
+
+.Toastify__toast-container {
+  z-index: 2147483647 !important;
+}

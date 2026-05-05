@@ -14,13 +14,13 @@ const AuthModal = forwardRef(function Modal({ children }, ref) {
 
   return createPortal(
     <dialog
-      className="bg-gray-200 p-6 rounded-xl  max-w-5xl relative"
+      className="px-0 rounded-2xl"
       ref={dialog}
     >
       {/* ❌ CLOSE BUTTON */}
       <button
         onClick={() => dialog.current.close()}
-        className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-red-500 text-white shadow-lg hover:bg-red-600 hover:scale-110 transition"
+        className="absolute top-2 right-1 w-10 h-10 flex items-center justify-center rounded-full bg-red-500 text-white shadow-lg hover:bg-red-600 hover:scale-110 transition z-20"
       >
         <X size={22} />
       </button>

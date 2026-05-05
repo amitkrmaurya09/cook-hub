@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { loginUser } from "../api/api";
+import { loginUser } from "../api/auth-api";
 import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";

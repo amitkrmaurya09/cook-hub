@@ -5,18 +5,24 @@ import Home from "./pages/Home/Home";
 import Create from "./pages/Create";
 import VideoSearch from "./video/VideoPage";
 import MainLayout from "./layout/MainLayout";
-
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
+import Feed from "./feed/FeedPage";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route  element={<MainLayout />}>
+    <>
+      <ToastContainer />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
-          <Route path="/videos" element={<VideoSearch />} />
-          <Route path="/create" element={<Create />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            <Route path="/videos" element={<VideoSearch />} />
+            <Route path='/feed' element={<Feed />} />
+            <Route path="/create" element={<Create />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }

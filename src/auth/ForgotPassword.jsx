@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { forgotPassword } from "../api/api";
+import { forgotPassword } from "../api/auth-api";
 import { motion } from "framer-motion";
 import { Mail, ArrowRight } from "lucide-react";
 

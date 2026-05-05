@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import AuthContainer from "../auth/AuthContainer";
+import AuthContainer from "./Modal/ModalContainer";
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -58,7 +58,7 @@ export default function Navbar() {
           {/* Links */}
           <div className="flex items-center gap-6 text-sm font-medium">
             {navLink("/", "Home")}
-            
+
             <button
               onClick={() => handleCreateClick()}
               className="relative px-3 py-1 text-gray-500 hover:text-black"
@@ -88,7 +88,7 @@ export default function Navbar() {
       </div>
 
       {/* 🔥 Auth System Mounted Once */}
-      <AuthContainer ref={authRef} />
+      {/* <AuthContainer ref={authRef} /> */}
     </>
   );
 }

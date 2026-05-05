@@ -1,4 +1,4 @@
-// src/api/axios.js
+/// src/api/axios.js
 import axios from "axios";
 
 export const API = axios.create({
@@ -6,7 +6,12 @@ export const API = axios.create({
 });
 
 API.interceptors.request.use((req) => {
+  // console.log('reach here...')
   const token = localStorage.getItem("token");
-  if (token) req.headers.Authorization = `Bearer ${token}`;
+
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
+  }
+
   return req;
 });

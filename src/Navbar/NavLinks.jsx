@@ -22,7 +22,6 @@ export default function NavLinks({ onCreate }) {
     <>
       {navLink("/", "Home")}
       {navLink("/videos", "Videos")}
-
       <button
         onClick={onCreate}
         className="px-3 py-1 text-gray-500 hover:text-black"
