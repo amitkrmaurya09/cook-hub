@@ -6,7 +6,7 @@ import Register from "../../auth/Register";
 import OtpVerify from "../../auth/OtpVerify";
 import ForgotPassword from "../../auth/ForgotPassword";
 import ResetPassword from "../../auth/ResetPassword";
-import { handleFlow } from "./ModalFlow"; // adjust path
+import { handleAuthFlow } from "./ModalFlow"; // adjust path
 import Profile from "../ProfilePages/Profile";
 import Create from "../../pages/Create";
 import Feed from "../../feed/FeedPage";
@@ -19,7 +19,7 @@ const AuthContainer = forwardRef((props, ref) => {
     const [email, setEmail] = useState("");
 
     const handleFlow = (type, data) =>
-        handleFlow({
+        handleAuthFlow({
             type,
             data,
             setView,

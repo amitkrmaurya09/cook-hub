@@ -7,7 +7,7 @@ import {
 } from "../../api/auth-api";
 
 // 🔥 CENTRAL AUTH FLOW CONTROLLER
-export async function handleFlow({
+export async function handleAuthFlow({
   type,
   data,
   setView,
@@ -27,8 +27,6 @@ export async function handleFlow({
         } else {
           // ✅ STORE TOKEN HERE
           localStorage.setItem("token", res.token);
-          localStorage.setItem("user-info", JSON.stringify(res.user));
-
           return { success: true, user: res.user };
         }
         break;
@@ -76,11 +74,6 @@ export async function handleFlow({
         setView("login"); // 👈 back to login
 
         return res;
-      }
-
-      case "edit": {
-        setView("edit")
-        return;
       }
 
       default:

@@ -14,7 +14,7 @@ const AuthModal = forwardRef(function Modal({ children }, ref) {
 
   return createPortal(
     <dialog
-      className="px-0 rounded-2xl"
+      className="p-4 rounded-2xl"
       ref={dialog}
     >
       {/* ❌ CLOSE BUTTON */}
