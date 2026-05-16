@@ -8,15 +8,15 @@ import ForgotPassword from "../../auth/ForgotPassword";
 import ResetPassword from "../../auth/ResetPassword";
 import { handleAuthFlow } from "./ModalFlow"; // adjust path
 import Profile from "../ProfilePages/Profile";
-import Create from "../../pages/Create";
+import Create from "../create/Create";
 import Feed from "../../feed/FeedPage";
 
 
-const AuthContainer = forwardRef((props, ref) => {
-    const modalRef = useRef();
-
+const ModalContainer = forwardRef((props, ref) => {
     const [view, setView] = useState("login");
     const [email, setEmail] = useState("");
+    const [editData, setEditData] = useState(null);
+    const modalRef = useRef();
 
     const handleFlow = (type, data) =>
         handleAuthFlow({
@@ -39,8 +39,14 @@ const AuthContainer = forwardRef((props, ref) => {
             setView("profile");
             modalRef.current.open();
         },
-        openCreate: () => {
-            setView("create");
+        openCreate: (recipe) => {
+            // console.log("forwardref",recipe)
+            setEditData(recipe || null)
+            if(recipe){
+                setView("edit");
+            }else{
+                setView("create")
+            }
             modalRef.current.open();
         },
         openFeed: () => {
@@ -84,7 +90,7 @@ const AuthContainer = forwardRef((props, ref) => {
             case "create":
                 return <Create />
             case "edit":
-                return <Create />
+                return <Create editData={editData} />
             case "feed":
                 return <Feed />
             default:
@@ -106,4 +112,4 @@ const AuthContainer = forwardRef((props, ref) => {
     );
 });
 
-export default AuthContainer;
+export default ModalContainer;

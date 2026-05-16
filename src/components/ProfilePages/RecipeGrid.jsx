@@ -1,21 +1,15 @@
 import { Pencil, Trash2, ExternalLink } from "lucide-react";
-import AuthContainer from "../Modal/ModalContainer";
-import { useRef } from "react";
+import ModalContainer from "../Modal/ModalContainer";
 
 export default function RecipeGrid({ recipes, authRef, onDelete }) {
-      const dialog = useRef();
 
-    const onEdit = (id)=>{
-    console.log(id)
-    alert(id.id);
-    dialog.current.close();
-   authRef.current.openCreate();
-   alert(res);
+  const onEdit = (r)=>{
+    // console.log("in grid",id)
+   authRef.current.openCreate(r);
   }
 
   return (
     <div className="md:col-span-2 bg-white rounded-2xl shadow-lg p-6">
-      <AuthContainer authRef={authRef} />
       <h3 className="text-lg font-semibold mb-4">
         🍲 My Recipes
       </h3>

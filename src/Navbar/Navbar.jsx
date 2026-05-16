@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import AuthContainer from "../components/Modal/ModalContainer";
+import ModalContainer from "../components/Modal/ModalContainer";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import AuthButtons from "./AuthButtons";
@@ -39,7 +39,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <AuthContainer ref={authRef} />
+      <ModalContainer ref={authRef} />
     </>
   );
 }

@@ -12,10 +12,12 @@ export default function Feed() {
     (async () => {
       try {
         // Uncomment to use real API:
-        // const res = await API.get("/recipe/feed");
-        // setRecipes(res.data.recipes);
-        setRecipes(dummyRecipes);
+        const res = await API.get("/recipe/feed");
+        console.log(res)
+        const data = res
+        setRecipes(res.data.recipes);
       } catch (err) {
+        setRecipes(dummyRecipes);
         console.error("Failed to load feed:", err);
         setError("Could not load feed. Please try again.");
       } finally {

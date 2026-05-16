@@ -13,8 +13,8 @@ export default function ProfileCard({
     handleLogout,
     handleDeleteAccount
 }) {
-    console.log(form)
-    console.log(stats)
+    // console.log(form)
+    // console.log(stats)
     return (
         <div className="bg-white rounded-2xl shadow-lg p-6 space-y-5 transition hover:shadow-xl">
 

@@ -11,7 +11,7 @@ import RecipeGrid from "../components/RecipeGrid";
 import FeaturedBanner from "../RecipeCards/FeaturedBanner";
 
 import { DUMMY_RECIPES, CATEGORIES, STATS, FEATURED } from "../data/homeData";
-import AuthContainer from "../components/Modal/ModalContainer";
+import ModalContainer from "../components/Modal/ModalContainer";
 
 export default function Home() {
   const [recipes, setRecipes] = useState(DUMMY_RECIPES);
@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <AuthContainer ref={authRef} />
+      <ModalContainer ref={authRef} />
 
       <div className="min-h-screen bg-stone-50" style={{ fontFamily: "'DM Sans', sans-serif" }}>
         <style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500&display=swap');`}</style>
